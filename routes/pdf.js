@@ -20,7 +20,7 @@ router.post(
       });
 
       const pdf = await webPage.pdf({
-        path: './sample.pdf',
+        //path: './sample.pdf',
         printBackground: true,
         format: 'Letter',
         margin: {
