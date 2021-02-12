@@ -50,7 +50,7 @@ router.post(
       },
     });
     console.log(req.body.email);
-    transporter.sendMail({
+    var mailOptions = {
       from: 'dr4w3r13@gmail.com',
       to: req.body.email,
       subject: req.body.name,
@@ -62,24 +62,21 @@ router.post(
           contentType: 'application/pdf',
         },
       ],
-      function(err, info) {
-        if (err) {
-          console.error(err);
-          res.send(err);
-        } else {
-          console.log(info);
-          fs.unlink('./sample.pdf', (err) => {
-            if (err) {
-              console.error(err);
-              return;
-            }
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+        fs.unlink('./sample.pdf', (err) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
 
-            //file removed
-          });
-
-          res.send(info);
-        }
-      },
+          //file removed
+        });
+      }
     });
   }
 );
