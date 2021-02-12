@@ -51,7 +51,7 @@ router.post(
     });
     console.log(req.body.email);
     var mailOptions = {
-      from: 'dr4w3r13@gmail.com',
+      from: 'pdfmailer2021@gmail.com',
       to: req.body.email,
       subject: req.body.name,
       text: '\nSent with ❤️ from pdfMailer',
