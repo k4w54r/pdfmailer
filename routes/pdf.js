@@ -1,8 +1,9 @@
 const express = require('express');
+const router = express.Router();
+
 const puppeteer = require('puppeteer');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
-const router = express.Router();
 
 router.post(
   '/',
@@ -66,6 +67,7 @@ router.post(
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
+        res.status(500).send("Couldn't send PDF");
       } else {
         console.log('Email sent: ' + info.response);
         fs.unlink('./sample.pdf', (err) => {
@@ -76,6 +78,8 @@ router.post(
 
           //file removed
         });
+        res.contentType('application/pdf');
+        res.send(pdf);
       }
     });
   }
