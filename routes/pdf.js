@@ -11,7 +11,7 @@ router.post(
     try {
       const url = req.body.url;
       const browser = await puppeteer.launch({
-        args: ['--no-sandbox'],
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
       });
       const webPage = await browser.newPage();
       await webPage.setDefaultNavigationTimeout(0);
