@@ -10,7 +10,7 @@ export const convertAndSend = async (url, email, name) => {
   };
 
   try {
-    const res = await axios.post('/pdf', url, email, name, config);
+    const res = await axios.post('/api/pdf', url, email, name, config);
     console.log(res);
   } catch (err) {
     console.log('Error');

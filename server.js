@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 
 //Define Routes
-app.use('/pdf', require('./routes/pdf'));
+app.use('/api/pdf', require('./routes/pdf'));
 
 //Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
