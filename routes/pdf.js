@@ -56,7 +56,7 @@ router.post(
           //file removed
         });
         res.contentType('application/pdf');
-        res.send(pdf);
+        res.json('Done');
       }
     });
   }
