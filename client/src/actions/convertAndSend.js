@@ -2,7 +2,7 @@ import axios from 'axios';
 
 //Send Mail
 
-export const convertAndSend = async (url, email) => {
+export const convertAndSend = async (url, email, name) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -10,7 +10,7 @@ export const convertAndSend = async (url, email) => {
   };
 
   try {
-    const res = await axios.post('/pdf', url, email, config);
+    const res = await axios.post('/pdf', url, email, name, config);
     console.log(res);
   } catch (err) {
     console.log('Error');

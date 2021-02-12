@@ -1,6 +1,7 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
 const nodemailer = require('nodemailer');
+const fs = require('fs');
 const router = express.Router();
 
 router.post(
@@ -44,19 +45,19 @@ router.post(
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'dr4w3r13@gmail.com',
-        pass: 'tennisgolf',
+        user: 'pdfmailer2021@gmail.com',
+        pass: 'amikichujanina',
       },
     });
     console.log(req.body.email);
     transporter.sendMail({
       from: 'dr4w3r13@gmail.com',
       to: req.body.email,
-      subject: 'An Attached File',
-      text: 'Check out this attached pdf file',
+      subject: req.body.name,
+      text: '\nSent with ❤️ from pdfMailer',
       attachments: [
         {
-          filename: 'sample.pdf',
+          filename: req.body.name + '.pdf',
           path: './sample.pdf',
           contentType: 'application/pdf',
         },
@@ -67,6 +68,15 @@ router.post(
           res.send(err);
         } else {
           console.log(info);
+          fs.unlink('./sample.pdf', (err) => {
+            if (err) {
+              console.error(err);
+              return;
+            }
+
+            //file removed
+          });
+
           res.send(info);
         }
       },

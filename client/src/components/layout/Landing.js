@@ -1,12 +1,14 @@
 import React, { Fragment, useState } from 'react';
 import { convertAndSend } from '../../actions/convertAndSend';
-
+import { Header, Icon } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 const App = () => {
   const [formData, setFormData] = useState({
     url: '',
     email: '',
+    name: '',
   });
-  const { url, email } = formData;
+  const { url, email, name } = formData;
 
   const handleOnChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,6 +20,7 @@ const App = () => {
     convertAndSend({
       url,
       email,
+      name,
     });
   };
 
@@ -25,10 +28,17 @@ const App = () => {
     <Fragment>
       <section className='container'>
         <div>
-          <h1 className='large text-primary text-center'>
-            Convert URL to PDF and Send as Email
+          <Header as='h1' color='green' textAlign='center'>
+            <Icon.Group size='large'>
+              <Icon name='mail' color='green' />
+              <Icon corner name='file pdf outline' color='green' />
+            </Icon.Group>
+            pdfMailer
+          </Header>
+          <h1 className='text-dark'>
+            Convert URL to PDF and send to your Email
           </h1>
-          <hr />
+          <hr className='text-primary' />
         </div>
         <div>
           <form className='form' onSubmit={(e) => handleOnSubmit(e)}>
@@ -42,19 +52,23 @@ const App = () => {
                 required
               />
               <input
-                type='text'
+                type='email'
                 placeholder='Email Address'
                 name='email'
                 value={email}
                 onChange={(e) => handleOnChange(e)}
                 required
               />
+              <input
+                type='text'
+                placeholder='Enter a name for the PDF'
+                name='name'
+                value={name}
+                onChange={(e) => handleOnChange(e)}
+                required
+              />
             </div>
-            <input
-              type='submit'
-              className='btn btn-primary'
-              value='Convert and Send'
-            />
+            <input type='submit' className='button' value='Convert and Send' />
           </form>
         </div>
       </section>
