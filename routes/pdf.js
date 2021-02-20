@@ -78,8 +78,7 @@ router.post(
 
           //file removed
         });
-        res.contentType('application/pdf');
-        res.send(pdf);
+        res.status(200).send('PDF Sent');
       }
     });
   }
