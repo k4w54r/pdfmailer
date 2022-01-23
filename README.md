@@ -11,5 +11,7 @@ Convert any URL to PDF and send to Email
 * React
 * Node
 
-## [https://pdfmailer2021.herokuapp.com/](http://pdfmailer2021.herokuapp.com/)
+## Deployed Site
+
+Deployed [here](http://pdfmailer2021.herokuapp.com/)
 
