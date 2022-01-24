@@ -7,9 +7,11 @@ A utility website that can convert the content of any given url into a pdf and s
 -   Send the newly converted PDF to any email address
 
 ## Built With
-
+* JavaScript
+* NodeJs
+* Express
+* Puppeteer
 * React
-* Node
 
 ## Deployed Site
 
